@@ -1,0 +1,82 @@
+<h1>データセット</h1>
+
+<h2>ダウンロード **(2.5GB以上あります)**</h2>
+<pre>
+wget http://www.iic.ecei.tohoku.ac.jp/~tomo/alcon2019.tar.gz
+tar xzvf alcon2019.tar.gz
+</pre>
+<p>
+このtar.gzファイルの中身は以下の通り．
+</p>
+<pre>
+alcon2019/
+├── README.md
+├── dataset
+│   ├── README.md
+│   ├── test
+│   │   ├── annotations.csv
+│   │   └── imgs
+│   ├── train
+│   │   ├── annotations.csv
+│   │   └── imgs
+│   └── train_kana
+├── main.py
+└── srcs
+    ├── __init__.py
+    ├── myalgorithm.py
+    └── utils.py
+</pre>
+
+<p>
+ライセンスやその他の情報はREADME.mdを参照．
+</p>
+
+
+<h3>説明</h3>
+
+<ul>
+
+<li>csvファイル</li>
+<ul>
+<li>dataset/test/annotations.csv: 提出するファイル．（空です）</li>
+<li>dataset/train/annotations.csv: 学習ファイルのラベルリスト</li>
+</ul>
+1行目はヘッダです．
+それ以降の行は，1つの画像のIDと3文字（上，中，下それぞれ）のラベル三つです．
+以下は例です．
+<pre>
+ID,Unicode1,Unicode2,Unicode3
+0,U+3084,U+308C,U+3068
+1,U+306E,U+304B,U+306A
+2,U+304B,U+306A,U+3057
+...
+</pre>
+ラベルはUnicode code pointsで，
+範囲はU+3042（ひらがなの「あ」）から
+U+3093（ひらがなの「ん」）までです．
+code pointsのリストは次のURLなどを参照してください．
+"<a href="https://www.utf8-chartable.de/unicode-utf8-table.pl?start=12352&number=128&view=3">
+UTF-8 encoding table and Unicode characters; page with code points U+3040 to U+30BF</a>"
+
+
+<li>画像ファイル</li>
+<ul>
+<li>dataset/test/imgs/: 16387枚（0から16386まで）のテストセットの画像があるフォルダ．</li>
+<li>dataset/train/imgs/: 
+119997枚（0から119996まで）の学習セットの画像があるフォルダ．</li>
+</ul>
+ファイル名の数字は画像のIDです．
+例えば0.jpgのIDは0，100.jpgのIDは100です．
+
+<li>追加画像ファイル</li>
+train_kana/ フォルダには学習用の追加画像があります．
+各画像には1つの文字です．
+アルゴリズムの開発のためにしようして構いません．
+
+<li>サンプルコード</li>
+main.pyとsrcs/ フォルダ中のファイルはpythonのサンプルコードです．
+これらを使っても構いません．
+
+
+</ul>
+

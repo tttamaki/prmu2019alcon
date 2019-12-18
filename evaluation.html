@@ -1,0 +1,66 @@
+<h1>Evaluation and submission</h1>
+<h2>Metric</h2>
+<p>A sample (single training or test image) contains three characters. A sample is correct if all three characters are correct, otherwise wrong. Submissions are evaluated by recognition rate (number of correct samples / number of all samples).</p>
+<h2>Phases</h2>
+<ol>
+<li>test-dev phase: first 3000 samples in the test set are evaluated to show the recognition rate of the first 3000 samples on the leaderboard, which is NOT the final score.</li>
+<li>test-challenge phase: all other samples (from 3000 to the last) in the test set are evaluated to compute the recognition rate (again, excluding the first 3000 samples). This score is the final one.</li>
+</ol>
+
+<h2>Protocol</h2>
+<ul>
+<li>During the test-dev phase, You can submit a csv file up to <s>5</s> 15 times (2019/7/23 changed: max 5 to max 15), with 5 maximum submissions per day. (Caution! if you submit 5 times a day for three days, then you run out the allowed number of 15 submissions.)</li>
+<li>The submitted csv file is the predictions for "all 16387 samples" in the test set (NOT for only the first 3000 samples).</li>
+<li>If the file is successfully submitted, the result score is shown in your private view
+(the score is the recognition rate for the first 3000 samples in the test set).
+It may take few to 20 minutes. Be patient ! (If something wrong, please check the log by clicking "View scoring output log" link.)</li>
+<li>Once your submissions has scores,
+choose one of the results to show on the public leaderboard, by clicking "Submit to Leaderboard" button.
+The selected one is used for the evaluation in the test-challenge phase.
+If you want to show another submission on the leaderboard (and hence for the evaluation in the test-challenge phase), simply click "Submit to Leaderboard" button of the submission you want to show.</li>
+</li>
+<li>In the test-challenge phase, you have to nothing. The score of the submission selected in the test-dev phase is shown on the leaderboard. The score is the recognition rate for all samples (excluding the first 3000) in the test set.</li>
+</ul>
+Note: Currently the leaderboard is hidden, but the score you choose is valid for the test-challenge phase. Please do not forget to click "Submit to Leaderboard" button !
+
+
+
+<h2>Submission file format</h2>
+<h3>example</h3>
+The file should have 16388 lines:
+<pre>
+ID,Unicode1,Unicode2,Unicode3
+0,U+3057,U+3044,U+308A
+1,U+304A,U+3068,U+304F
+2,U+304B,U+306A,U+3057
+...
+16386,U+304B,U+306A,U+3057
+</pre>
+<h3>header</h3>
+<ol>
+<li>ID: ID of the sample in the test set</li>
+<li>Unicode1: Unicode of the first character (top in a image)</li>
+<li>Unicode2: Unicode of the second character (middle in a image)</li>
+<li>Unicode3: Unicode of the third character (bottom in a image)</li>
+</ol>
+<h3>each line</h3>
+<p>ID, and Unicode for three characters with the form of "U+xxxx", separated by comma.
+A to F should be in capitals (evaluations are done by string matching).</p>
+<h3>file name</h3>
+<p>The file name should be "test_prediction.csv", which should be zipped as a single zip file.
+
+<p>The zip file can have any name, but should contain a single file named "test_prediction.csv" <strong>without</strong> any folders.</p>
+
+<p>You can create and check your submission zip file by using zip and unzip as follows:
+<pre>
+$ zip yoursubmission.zip test_prediction.csv
+updating: test_prediction.csv (deflated 79%)
+$ unzip -l yoursubmission.zip
+Archive:  yoursubmission.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   357417  03-22-2019 10:17   test_prediction.csv
+---------                     -------
+   357417                     1 file
+</pre>
+</p>

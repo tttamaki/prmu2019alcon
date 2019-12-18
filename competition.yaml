@@ -1,0 +1,47 @@
+# Build an example competition
+---
+title: 2019 PRMU challenge on old Japanese character recognition
+description: Recognizing successive three letters in old Japanese documents
+image: logo.png
+end_date: 2019-09-01 14:59:00
+html: 
+    overview: overview.html
+    evaluation: evaluation.html
+    terms: terms_and_conditions.html
+    data: data.html
+phases:
+    1:
+        phasenumber: 1
+        description: Submit your results on the test set. Show one of results to the leaderboard, which is used for the final phase.
+        label: "test-dev"
+        start_date: 2019-05-01 15:00:00
+        max_submissions_per_day: 5
+        max_submissions: 15
+        is_scoring_only: True
+        force_best_submission_to_leaderboard: False
+        scoring_program: prmu-alcon-2019-scoring_program-test-dev.zip
+        reference_data: prmu-alcon-2019-reference.zip
+    2:
+        phasenumber: 2
+        label: "test-challenge"
+        description: Final phase. you don't submit results. Instead, the result shown in the leaderboard of the test-dev phase is used for the final evaluataion.
+        start_date: 2019-08-31 14:59:00
+        auto_migration: True
+        max_submissions: 1
+        max_submissions_per_day: 1
+        is_scoring_only: True
+        force_best_submission_to_leaderboard: True
+        scoring_program: prmu-alcon-2019-scoring_program-test-challenge.zip
+        reference_data: prmu-alcon-2019-reference.zip
+
+leaderboard:
+    leaderboards:
+        Results: &RESULTS
+            label: RESULTS
+            rank: 1
+    columns:
+        score:
+            leaderboard: *RESULTS
+            label: recognition rate
+            numeric_format: 6
+            rank: 1

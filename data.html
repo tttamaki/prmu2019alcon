@@ -1,0 +1,81 @@
+<h1>Dataset</h1>
+
+<h2>Download **(larger than 2.5GB)**</h2>
+<pre>
+wget http://www.iic.ecei.tohoku.ac.jp/~tomo/alcon2019.tar.gz
+tar xzvf alcon2019.tar.gz
+</pre>
+<p>
+The tar.gz file has the following folders:
+</p>
+<pre>
+alcon2019/
+├── README.md
+├── dataset
+│   ├── README.md
+│   ├── test
+│   │   ├── annotations.csv
+│   │   └── imgs
+│   ├── train
+│   │   ├── annotations.csv
+│   │   └── imgs
+│   └── train_kana
+├── main.py
+└── srcs
+    ├── __init__.py
+    ├── myalgorithm.py
+    └── utils.py
+</pre>
+
+<p>
+See README.md for License and further information.
+</p>
+
+
+<h3>Contents</h3>
+
+<ul>
+
+<li>csv files</li>
+<ul>
+<li>dataset/test/annotations.csv: a blank file that you will submit.</li>
+<li>dataset/train/annotations.csv: a label list for train files. </li>
+</ul>
+The first line is the header.
+Following lines are ID and three labels for the three characters (top, middle, and bottom) in a single image.
+Here is an example.
+<pre>
+ID,Unicode1,Unicode2,Unicode3
+0,U+3084,U+308C,U+3068
+1,U+306E,U+304B,U+306A
+2,U+304B,U+306A,U+3057
+...
+</pre>
+Labels are Unicode code points ranging from U+3042 (HIRAGANA LETTER A) to U+3093 (HIRAGANA LETTER N).
+See the list of code points at
+"<a href="https://www.utf8-chartable.de/unicode-utf8-table.pl?start=12352&number=128&view=3">
+UTF-8 encoding table and Unicode characters; page with code points U+3040 to U+30BF</a>"
+
+
+<li>image files</li>
+<ul>
+<li>dataset/test/imgs/: folder containing the test set of 16387 test image file (numbered from 0 to 16386).</li>
+<li>dataset/train/imgs/: folder containing the training set of 119997 training image file (numbered from 0 to 119996)</li>
+</ul>
+The number in the file name stands for the ID of the image. For example, 0.jpg is ID 0, 100.jpg is ID 100, and so on.
+
+<li>extra image files</li>
+train_kana/ folder have additional training images. Here individual characters are separated.
+These images may or may not be used for developing algorithms.
+
+
+<li>starter kit</li>
+main.py and files in srcs/ folder are python scripts for starting the development.
+These files may or may not be used.
+
+
+
+
+
+</ul>
+
